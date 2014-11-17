@@ -3,6 +3,7 @@ require 'mongo'
 require 'pry'
 
 get '/' do
-  @builds = Mongo::MongoClient.new("localhost", 27017).db("collective").collection("builds").find
+  mongo_uri = ENV['MONGOLAB_URI'] | "localhost"
+  @builds = Mongo::MongoClient.from_uri(mongo_uri).db("collective").collection("builds").find
   erb :index
 end
