@@ -1,12 +1,22 @@
 require 'sinatra'
 require 'mongo'
 require 'pry'
+require './build_loader.rb'
 
 get '/' do
   mongo_uri = ENV['MONGOLAB_URI']
   db_name = mongo_uri[%r{/([^/\?]+)(\?|$)}, 1]
   @builds = Mongo::MongoClient.from_uri(mongo_uri).db(db_name).collection("builds").find
   erb :index
+end
+
+get '/new_build' do
+  erb :new_build
+end
+
+post '/new_build' do
+  BuildLoader.load_build(params[:name], params[:url])
+  redirect :index
 end
 
 get '/insert_crap' do
