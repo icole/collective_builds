@@ -130,11 +130,11 @@ window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.ge
 
 <!-- Row 1 -->
 <% @builds.each do |build| %>
-    <tr class="tablerow">   
+    <tr class="tablerow">
         <td><%=build["name"]%></td>
         <td></td>
         <td></td>
-        <td></td>
+        <td><a href=<%="/info/"+build["_id"].to_s%>>More Details</a></td>
     </tr>
 <% end %>
 
