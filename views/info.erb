@@ -1,27 +1,33 @@
 <center>
-          <table style="width:90%;" class="mainTable">
-            <tr class="InfoTable">
-                <style> td {
-                    border: 12px solid #fff;
-                }
-                </style>
+    <table style="width:90%;" class="mainTable">
+        <tr class="InfoTable">
+            <style>
+	     td {
+                 border: 12px solid #fff;
+		 height: 45px;
+	     }
+            </style>
 
-            </tr>
-            <tr class="infoHeadings">
-                <th></th>
-                <th>Component</th>
-                <th>Name</th>
-                <th>Part Price</th>
-            </tr>
+        </tr>
+        <tr class="infoHeadings">
+            <th></th>
+            <th>Component</th>
+            <th>Name</th>
+            <th>Part Price</th>
+        </tr>
 
-	    <% @build["parts"].each do |part| %>
+	<% @build["parts"].each do |part| %>
             <tr>
-                <td><img src=<%="/lib/images/icons/"+part["type"].downcase.gsub(" ", "-")+".jpg"%> alt="some_text"></td>
+                <td>
+		    <% if File.exists?(settings.root+"/public/lib/images/icons/"+part["type"].downcase.gsub(" ", "-")+".jpg") %>
+			<img src=<%="/lib/images/icons/"+part["type"].downcase.gsub(" ", "-")+".jpg"%> alt="some_text">
+		    <% end %>
+		</td>
                 <td><%= part["type"] %></td>
                 <td><%= part["name"]%></td>
                 <td><%= part["price"]%></td>
             </tr>
-	    <% end %>
+	<% end %>
 
-          </table>
+    </table>
 </center>

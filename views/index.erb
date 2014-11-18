@@ -1,32 +1,36 @@
 <center>
 
-      <h1> Soon to be the best collection of PC builds in one place.</h1>
-      <h2>With your help of course.</h2>
+    <h1> Soon to be the best collection of PC builds in one place.</h1>
+    <h2>With your help of course.</h2>
 
-      <h4>These are some PC builds suggested so far. We know you have a kick ass build to contribute. So what are you waiting for? Go ahead and click the "Suggest a Build Button" at the bottom of each category. We also know you are thinking we should add a whole new category of builds. That's called being awesome. And awesome people click the "Suggest a Category" button at the top. <br> We would also like to thank you because you're awesome. <br> So thanks!<h4>
+    <h4>These are some PC builds suggested so far.<br> We know you have a kick ass build to contribute. So what are you waiting for?<br> Go ahead and click the "Suggest a Build Button" at the top. <br> We would also like to thank you because you're awesome. <br> So thanks!<h4>
 
-<table style="width:90%;" class="mainTable">
-<tr class="TableToggle">
-<th colspan="5">Builds</th>
+    <table style="width:90%;" class="mainTable">
+	<tr class="TableToggle">
+	    <th colspan="5">Builds</th>
+	</tr>
+	<tr class="subHeadings">
+	    <th>Name</th>
+	    <th>CPU</th>
+	    <th>Video Card</th>
+	    <th>Total Price</th>
+	</tr>
+	<% @builds.each do |build| %>
+	    <tr class="tablerow">
+		<td><%=build["name"]%></td>
+		<% if build["parts"] && build["parts"].select{|p| p["type"] == "CPU"}.any? %>
+		    <td><%= build["parts"].select{|p| p["type"] == "CPU"}.first["name"] %></td>
+		<% else  %>
+		    <td></td>
+		<% end %>
+		<% if build["parts"] && build["parts"].select{|p| p["type"] == "Video Card"}.any? %>
+		    <td><%= build["parts"].select{|p| p["type"] == "Video Card"}.first["name"] %></td>
+		<% else %>
+		    <td></td>
+		<% end %>
+		<td><a href=<%="/info/"+build["_id"].to_s%>>More Details</a></td>
+	    </tr>
+	<% end %>
+    </table>
 
-</tr>
-<tr class="subHeadings">
-    <th>Name</th>
-    <th>CPU</th>
-    <th>Video Card</th>
-    <th>Total Price</th>
-</tr>
-
-<!-- Row 1 -->
-<% @builds.each do |build| %>
-    <tr class="tablerow">
-        <td><%=build["name"]%></td>
-        <td></td>
-        <td></td>
-        <td><a href=<%="/info/"+build["_id"].to_s%>>More Details</a></td>
-    </tr>
-<% end %>
-
-
-</table>
 </center>

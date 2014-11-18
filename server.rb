@@ -31,6 +31,6 @@ get '/insert_crap' do
   mongo_uri = ENV['MONGOLAB_URI']
   db_name = mongo_uri[%r{/([^/\?]+)(\?|$)}, 1]
   builds = Mongo::MongoClient.from_uri(mongo_uri).db(db_name).collection("builds")
-  BuildLoader.load_build('Test Build', 'http://pcpartpicker.com/p/jQ8Byc')
+  BuildLoader.load_build('Test Build', 'http://pcpartpicker.com/p/q2mcNG')
   redirect '/'
 end
