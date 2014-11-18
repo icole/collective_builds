@@ -6,7 +6,9 @@ require 'pry'
 class BuildLoader
 
   def self.load_build(name, url)
-    builds = Mongo::MongoClient.new("localhost", 27017).db("collective").collection("builds")
+    mongo_uri = ENV['MONGOLAB_URI']
+    db_name = mongo_uri[%r{/([^/\?]+)(\?|$)}, 1]
+    builds = Mongo::MongoClient.from_uri(mongo_uri).db(db_name).collection("builds")
     build = {name: name}
     build[:parts] = parse_parts(url)
     builds.insert(build)
