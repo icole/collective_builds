@@ -5,6 +5,10 @@ require 'pry'
 
 class BuildLoader
 
+  def self.foo
+    "bar"
+  end
+
   def self.load_build(name, url)
     mongo_uri = ENV['MONGOLAB_URI']
     db_name = mongo_uri[%r{/([^/\?]+)(\?|$)}, 1]
@@ -26,8 +30,11 @@ class BuildLoader
         if columns[2].search("a").text && columns[2].search("a").text != ""
           part = {type: columns[0].search("a").text}
           part[:name] = columns[2].search("a").text
-
-          part[:price] = columns[3].text.gsub("\n", "").gsub("\t", "")
+          if columns[3].attributes["colspan"] && columns[3].attributes["colspan"].text == "4"
+            part[:price] = columns[4].text.gsub("\n", "").gsub("\t", "")
+          else
+            part[:price] = columns[7].text.gsub("\n", "").gsub("\t", "")
+          end
           parts << part
         end
       end

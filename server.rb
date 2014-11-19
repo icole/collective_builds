@@ -1,7 +1,8 @@
 require 'sinatra'
 require 'mongo'
 require 'pry'
-require './build_loader.rb'
+
+Dir[".//lib/*.rb"].each {|file| require file }
 
 get '/' do
   mongo_uri = ENV['MONGOLAB_URI']
@@ -24,13 +25,9 @@ get '/info/:id' do
   db_name = mongo_uri[%r{/([^/\?]+)(\?|$)}, 1]
   builds = Mongo::MongoClient.from_uri(mongo_uri).db(db_name).collection("builds")
   @build = builds.find({"_id" => BSON::ObjectId(params["id"])}).first
-  erb :info, :layout => :application
-end
-
-get '/insert_crap' do
-  mongo_uri = ENV['MONGOLAB_URI']
-  db_name = mongo_uri[%r{/([^/\?]+)(\?|$)}, 1]
-  builds = Mongo::MongoClient.from_uri(mongo_uri).db(db_name).collection("builds")
-  BuildLoader.load_build('Test Build', 'http://pcpartpicker.com/p/q2mcNG')
-  redirect '/'
+  if @build["parts"]
+    erb :info, :layout => :application
+  else
+    redirect '/'
+  end
 end
