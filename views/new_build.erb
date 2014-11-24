@@ -1,10 +1,59 @@
 <center>
-<h3 style="margin-top:25px;">Build Submission</h3>
-<form action="/new_build" method="post">
-   <b>Name</b><br/>
-   <input type="text" name="name"><br/>
-   <b>PC Part Picker URL</b><br/>
-   <input type="text" name="url"><br/>
-   <input type="submit" style="margin-top:15px;margin-bottom:50px;">
-</form>
+    <h3 style="margin-top:25px;">Build Submission</h3>
 </center>
+
+<form id="build_form" action="/new_build" method="post">
+
+    <div class="build_input">
+	<label>Build Name</label><br/>
+	<input type="text" name="name">
+    </div>
+
+    <div class="build_input">
+	<label>Build Description</label><br/>
+	<input type="textarea" name="description">
+    </div>
+
+    <div class="build_input">
+	<label>Operating System</label>
+	<ul>
+	    <li><input name="os" type="radio" value="Windows">Windows</li>
+	    <li><input name="os" type="radio" value="Linux">Linux</li>
+	    <li><input name="os" type="radio" value="OS X">OS X</li>
+	    <li><input name="os" type="radio" value="Other">Other: <input name="other_os" type="text"></li>
+	</ul>
+    </div>
+
+    <div class="build_input">
+	<label>What is this build best for?</label>
+	<ul>
+	    <li><input name="category" type="radio" value="Performance">Performance</li>
+	    <li><input name="category" type="radio" value="Gaming">Gaming</li>
+	    <li><input name="category" type="radio" value="Media">Media</li>
+	    <li><input name="category" type="radio" value="Mini PC">Mini PC</li>
+	    <li><input name="category" type="radio" value="Hackintosh">Hackintosh</li>
+	    <li><input name="category" type="radio" value="Other">Other: <input name="other_category" type="text"></li>
+	</ul>
+    </div>
+
+    <div class="build_input">
+	<label>PC Part Picker URL</label>
+	(if you have one)<br/>
+	<input type="text" name="url">
+    </div>
+
+    <div class="build_input">
+	<label>What country/currency was the PC built in?</label>
+	<input type="text" name="country">
+    </div>
+
+    <div class="build_input">
+	<label>Email (Optional)</label><br/>
+	<span>Get an email when your build is on our site</span><br/>
+	<input type="text" name="owner_email">
+    </div>
+
+    <center>
+	<input type="submit" style="margin-top:25px;margin-bottom:50px;">
+    </center>
+</form>

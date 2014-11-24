@@ -7,7 +7,7 @@ Dir[".//lib/*.rb"].each {|file| require file }
 get '/' do
   mongo_uri = ENV['MONGOLAB_URI']
   db_name = mongo_uri[%r{/([^/\?]+)(\?|$)}, 1]
-  @builds = Mongo::MongoClient.from_uri(mongo_uri).db(db_name).collection("builds").find
+  @builds = Mongo::MongoClient.from_uri(mongo_uri).db(db_name).collection("builds").find({reviewed: true})
   erb :index, :layout => :application
 end
 
@@ -16,8 +16,8 @@ get '/new_build' do
 end
 
 post '/new_build' do
-  BuildLoader.load_build(params[:name], params[:url])
-  redirect '/'
+  build_id = BuildLoader.load_build(params)
+  redirect "/info/#{build_id.to_s}"
 end
 
 get '/info/:id' do

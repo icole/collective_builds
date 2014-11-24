@@ -14,6 +14,7 @@
 	    <th>CPU</th>
 	    <th>Video Card</th>
 	    <th>Total Price</th>
+	    <th></th>
 	</tr>
 	<% @builds.each do |build| %>
 	    <tr class="tablerow">
@@ -28,6 +29,11 @@
 		<% else %>
 		    <td></td>
 		<% end %>
+		<% if build["total_price"] %>
+		    <td><%= build["total_price"] %></td>
+		<% else  %>
+		    <td></td>
+		 <% end %>
 		<td><a href=<%="/info/"+build["_id"].to_s%>>More Details</a></td>
 	    </tr>
 	<% end %>
