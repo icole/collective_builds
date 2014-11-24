@@ -27,7 +27,11 @@
 		    <% end %>
 		</td>
                 <td><%= part["type"] %></td>
-                <td><%= part["name"]%></td>
+                <% if part["p3_url"] %>
+		    <td><a href=<%= part["p3_url"] %>><%= part["name"]%></a></td>
+		<% else %>
+		    <td><%= part["name"]%></td>
+		<% end %>
                 <td><%= part["price"]%></td>
             </tr>
 	<% end %>

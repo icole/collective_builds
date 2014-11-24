@@ -11,7 +11,7 @@
 
     <div class="build_input">
 	<label>Build Description</label><br/>
-	<input type="textarea" name="description">
+	<textarea name="description" cols="40" rows="5"></textarea>
     </div>
 
     <div class="build_input">
@@ -43,6 +43,12 @@
     </div>
 
     <div class="build_input">
+	<label>Build Info</label><br/>
+	Build parts if you have no URL above<br/>
+	<textarea name="description" cols="40" rows="5"></textarea>
+    </div>
+
+    <div class="build_input">
 	<label>What country/currency was the PC built in?</label>
 	<input type="text" name="country">
     </div>
@@ -53,7 +59,5 @@
 	<input type="text" name="owner_email">
     </div>
 
-    <center>
-	<input type="submit" style="margin-top:25px;margin-bottom:50px;">
-    </center>
+    <input type="submit" class="build_submit">
 </form>

@@ -1516,12 +1516,24 @@ ul.social_icons li a i:hover {
 	padding-left: 75px;
     }
 
+    .build_input li > input {
+	margin-right: 10px;
+    }
+
     .build_input {
 	margin-bottom: 30px;
     }
 
     .build_input > label {
 	font-weight:bold;
+    }
+
+    .build_input input {
+	margin-top: 10px;
+    }
+
+    .build_input textarea {
+	margin-top: 10px;
     }
 
     .build_details {
@@ -1532,4 +1544,9 @@ ul.social_icons li a i:hover {
 
     .component {
 	width: 45px;
+    }
+
+    .build_submit {
+	margin-top:25px;
+	margin-bottom:50px;
     }

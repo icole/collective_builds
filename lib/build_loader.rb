@@ -31,8 +31,18 @@ class BuildLoader
       columns = row.children.search("td")
       if columns.count >= 4
         if columns[2].search("a").text && columns[2].search("a").text != ""
-          part = {type: columns[0].search("a").text}
-          part[:name] = columns[2].search("a").text
+          part = {}
+          #Component type
+          part[:type] = columns[0].search("a").text
+
+          #Part link and name
+          part_link = columns[2].search("a")
+          if part_link.attr("href")
+            part[:p3_url] = "http://pcpartpicker.com/" + part_link.attr("href").value
+          end
+          part[:name] = part_link.search("a").text
+
+          #Pricing data
           if columns[3].attributes["colspan"] && columns[3].attributes["colspan"].text == "4"
             part[:price] = columns[4].text.gsub("\n", "").gsub("\t", "")
           else
