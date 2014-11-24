@@ -1523,3 +1523,13 @@ ul.social_icons li a i:hover {
     .build_input > label {
 	font-weight:bold;
     }
+
+    .build_details {
+	margin-top: 20px;
+	margin-left: 5%;
+	margin-left: 5%;
+    }
+
+    .component {
+	width: 45px;
+    }

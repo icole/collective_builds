@@ -1,4 +1,7 @@
-<center>
+<div class="build_details">
+    <h2><b><%= @build["name"] %></b></h2>
+    <h5><div class="build_info"><b>Info:</b><br/><br/> <%= @build["description"] %></div></h5>
+
     <table style="width:90%;" class="mainTable">
         <tr class="InfoTable">
             <style>
@@ -20,7 +23,7 @@
             <tr>
                 <td>
 		    <% if File.exists?(settings.root+"/public/lib/images/icons/"+part["type"].downcase.gsub(" ", "-")+".jpg") %>
-			<img src=<%="/lib/images/icons/"+part["type"].downcase.gsub(" ", "-")+".jpg"%> alt="some_text">
+			<img class="component"" src=<%="/lib/images/icons/"+part["type"].downcase.gsub(" ", "-")+".jpg"%> alt="some_text">
 		    <% end %>
 		</td>
                 <td><%= part["type"] %></td>
@@ -37,4 +40,4 @@
 	</tr>
 
     </table>
-</center>
+</div>

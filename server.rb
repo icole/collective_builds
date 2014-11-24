@@ -31,3 +31,7 @@ get '/info/:id' do
     redirect '/'
   end
 end
+
+get '/build_guide' do
+  send_file "./files/build_guide_v01.pdf", :filename => "Build_Guide_V01.pdf", :type => 'Application/octet-stream'
+end
