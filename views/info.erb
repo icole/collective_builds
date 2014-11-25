@@ -1,3 +1,11 @@
+<% unless @build["reviewed"] %>
+     <div style= "background-color:#ffec83; border:2px; solid black; padding:10px; margin:30px; text-align:center; font-size: 20px; font-weight: bold;">
+           Thanks for suggesting a build. <br>
+           We will review your submission and it should be up shortly. <br>
+           In the meantime you can check out a preview below.
+     </div>
+<% end %>
+
 <div class="build_details">
     <h2><b><%= @build["name"] %></b></h2>
     <h5><div class="build_info"><b>Info:</b><br/><br/> <%= @build["description"] %></div></h5>
