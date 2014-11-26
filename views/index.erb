@@ -6,8 +6,8 @@
     <h4>These are some PC builds suggested so far.<br> We know you have a kick ass build to contribute. So what are you waiting for?<br> Go ahead and click the "Suggest a Build Button" at the top. <br> We would also like to thank you because you're awesome. <br> So thanks!<h4>
 
     <table style="width:90%;" class="mainTable">
-	<tr class="TableToggle">
-	    <th colspan="5">Builds</th>
+    	<tr class="TableToggle">
+	    <th colspan="5">Gaming</th>
 	</tr>
 	<tr class="subHeadings">
 	    <th>Name</th>
@@ -16,7 +16,7 @@
 	    <th>Total Price</th>
 	    <th></th>
 	</tr>
-	<% @builds.each do |build| %>
+	<% @gaming.each do |build| %>
 	    <tr class="tablerow">
 		<td><%=build["name"]%></td>
 		<% if build["parts"] && build["parts"].select{|p| p["type"] == "CPU"}.any? %>
@@ -38,5 +38,143 @@
 	    </tr>
 	<% end %>
     </table>
+
+    <table style="width:90%;" class="mainTable">
+    	<tr class="TableToggle">
+	    <th colspan="5">Performance</th>
+	</tr>
+	<tr class="subHeadings">
+	    <th>Name</th>
+	    <th>CPU</th>
+	    <th>Video Card</th>
+	    <th>Total Price</th>
+	    <th></th>
+	</tr>
+	<% @performance.each do |build| %>
+	    <tr class="tablerow">
+		<td><%=build["name"]%></td>
+		<% if build["parts"] && build["parts"].select{|p| p["type"] == "CPU"}.any? %>
+		    <td><%= build["parts"].select{|p| p["type"] == "CPU"}.first["name"] %></td>
+		<% else  %>
+		    <td></td>
+		<% end %>
+		<% if build["parts"] && build["parts"].select{|p| p["type"] == "Video Card"}.any? %>
+		    <td><%= build["parts"].select{|p| p["type"] == "Video Card"}.first["name"] %></td>
+		<% else %>
+		    <td></td>
+		<% end %>
+		<% if build["total_price"] %>
+		    <td><%= build["total_price"] %></td>
+		<% else  %>
+		    <td></td>
+		 <% end %>
+		<td><a href=<%="/info/"+build["_id"].to_s%>>More Details</a></td>
+	    </tr>
+	<% end %>
+    </table>
+
+    <table style="width:90%;" class="mainTable">
+    	<tr class="TableToggle">
+	    <th colspan="5">Mini PC</th>
+	</tr>
+	<tr class="subHeadings">
+	    <th>Name</th>
+	    <th>CPU</th>
+	    <th>Video Card</th>
+	    <th>Total Price</th>
+	    <th></th>
+	</tr>
+	<% @mini.each do |build| %>
+	    <tr class="tablerow">
+		<td><%=build["name"]%></td>
+		<% if build["parts"] && build["parts"].select{|p| p["type"] == "CPU"}.any? %>
+		    <td><%= build["parts"].select{|p| p["type"] == "CPU"}.first["name"] %></td>
+		<% else  %>
+		    <td></td>
+		<% end %>
+		<% if build["parts"] && build["parts"].select{|p| p["type"] == "Video Card"}.any? %>
+		    <td><%= build["parts"].select{|p| p["type"] == "Video Card"}.first["name"] %></td>
+		<% else %>
+		    <td></td>
+		<% end %>
+		<% if build["total_price"] %>
+		    <td><%= build["total_price"] %></td>
+		<% else  %>
+		    <td></td>
+		 <% end %>
+		<td><a href=<%="/info/"+build["_id"].to_s%>>More Details</a></td>
+	    </tr>
+	<% end %>
+    </table>
+
+    <table style="width:90%;" class="mainTable">
+    	<tr class="TableToggle">
+	    <th colspan="5">media</th>
+	</tr>
+	<tr class="subHeadings">
+	    <th>Name</th>
+	    <th>CPU</th>
+	    <th>Video Card</th>
+	    <th>Total Price</th>
+	    <th></th>
+	</tr>
+	<% @media.each do |build| %>
+	    <tr class="tablerow">
+		<td><%=build["name"]%></td>
+		<% if build["parts"] && build["parts"].select{|p| p["type"] == "CPU"}.any? %>
+		    <td><%= build["parts"].select{|p| p["type"] == "CPU"}.first["name"] %></td>
+		<% else  %>
+		    <td></td>
+		<% end %>
+		<% if build["parts"] && build["parts"].select{|p| p["type"] == "Video Card"}.any? %>
+		    <td><%= build["parts"].select{|p| p["type"] == "Video Card"}.first["name"] %></td>
+		<% else %>
+		    <td></td>
+		<% end %>
+		<% if build["total_price"] %>
+		    <td><%= build["total_price"] %></td>
+		<% else  %>
+		    <td></td>
+		 <% end %>
+		<td><a href=<%="/info/"+build["_id"].to_s%>>More Details</a></td>
+	    </tr>
+	<% end %>
+    </table>
+
+
+    <table style="width:90%;" class="mainTable">
+    	<tr class="TableToggle">
+	    <th colspan="5">Media</th>
+	</tr>
+	<tr class="subHeadings">
+	    <th>Name</th>
+	    <th>CPU</th>
+	    <th>Video Card</th>
+	    <th>Total Price</th>
+	    <th></th>
+	</tr>
+	<% @media.each do |build| %>
+	    <tr class="tablerow">
+		<td><%=build["name"]%></td>
+		<% if build["parts"] && build["parts"].select{|p| p["type"] == "CPU"}.any? %>
+		    <td><%= build["parts"].select{|p| p["type"] == "CPU"}.first["name"] %></td>
+		<% else  %>
+		    <td></td>
+		<% end %>
+		<% if build["parts"] && build["parts"].select{|p| p["type"] == "Video Card"}.any? %>
+		    <td><%= build["parts"].select{|p| p["type"] == "Video Card"}.first["name"] %></td>
+		<% else %>
+		    <td></td>
+		<% end %>
+		<% if build["total_price"] %>
+		    <td><%= build["total_price"] %></td>
+		<% else  %>
+		    <td></td>
+		 <% end %>
+		<td><a href=<%="/info/"+build["_id"].to_s%>>More Details</a></td>
+	    </tr>
+	<% end %>
+    </table>
+
 
 </center>

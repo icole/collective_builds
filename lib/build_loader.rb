@@ -10,9 +10,11 @@ class BuildLoader
     mongo_uri = ENV['MONGOLAB_URI']
     db_name = mongo_uri[%r{/([^/\?]+)(\?|$)}, 1]
     builds = Mongo::MongoClient.from_uri(mongo_uri).db(db_name).collection("builds")
-    params[:parts] = parse_parts(params[:url])
-    params[:total_price] = calculate_price(params[:parts])
-    params[:reviewed] = false
+    if params[:url] && params[:url] != ""
+      params[:parts] = parse_parts(params[:url])
+      params[:total_price] = calculate_price(params[:parts])
+    end
+    params[:reviewed] = true
     builds.insert(params)
   end
 
@@ -38,7 +40,12 @@ class BuildLoader
           #Part link and name
           part_link = columns[2].search("a")
           if part_link.attr("href")
-            part[:p3_url] = "http://pcpartpicker.com/" + part_link.attr("href").value
+            p3_name =  part_link.attr("href").value.gsub("/part/", "")
+            asin = strip_asin_from_p3(p3_name)
+            part[:p3_name] = p3_name
+            part[:amazon_asin] =asin
+            part[:amazon_url] = get_amazon_url(asin)
+            part[:p3_url] = get_p3_url(name)
           end
           part[:name] = part_link.search("a").text
 
@@ -54,4 +61,22 @@ class BuildLoader
     end
     parts
   end
+
+  def self.strip_asin_from_p3(name)
+    p3_base_url = "http://pcpartpicker.com/mr/amazon/"
+    response = HTTParty.get(p3_base_url + name)
+    amazon_url = response.request.last_uri.to_s
+    amazon_url.gsub!("pcpapi-20", "")
+    amazon_url.gsub!("/?tag=", "")
+    amazon_url.split("/").last
+  end
+
+  def self.get_amazon_url(asin)
+    "http://www.amazon.com/dp/#{asin}/?tag=aindexpc-20"
+  end
+
+  def self.get_p3_url(name)
+    "http://pcpartpicker.com/part/" + name
+  end
+
 end

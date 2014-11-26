@@ -24,13 +24,18 @@ helpers do
   end
 end
 
-get '/protected' do
+get '/review_builds' do
   protected!
-  "Welcome, authenticated client"
+  @builds = @builds.find({reviewed: false})
+  erb :index, :layout => :application
 end
 
 get '/' do
-  @builds = @builds.find({reviewed: true})
+  @gaming = @builds.find({reviewed: true, category: "Gaming"})
+  @media = @builds.find({reviewed: true, category: "Media"})
+  @performance = @builds.find({reviewed: true, category: "Performance"})
+  @hackintosh = @builds.find({reviewed: true, category: "Hackintosh"})
+  @mini = @builds.find({reviewed: true, category: "Mini"})
   erb :index, :layout => :application
 end
 
