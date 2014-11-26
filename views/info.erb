@@ -36,7 +36,7 @@
 		</td>
                 <td><%= part["type"] %></td>
 		<% if part["p3_url"] %>
-		    <td><a href=<%= part["p3_url"] %>><%= part["name"]%></a></td>
+		    <td><a href=<%= "http://pcpartpicker.com/part/"+part["p3_name"] %>><%= part["name"]%></a></td>
 		<% else %>
 		    <td><%= part["name"]%></td>
 		<% end %>

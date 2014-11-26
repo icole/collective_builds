@@ -45,7 +45,7 @@ class BuildLoader
             part[:p3_name] = p3_name
             part[:amazon_asin] =asin
             part[:amazon_url] = get_amazon_url(asin)
-            part[:p3_url] = get_p3_url(name)
+            part[:p3_url] = get_p3_url(p3_name)
           end
           part[:name] = part_link.search("a").text
 
