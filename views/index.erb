@@ -118,7 +118,7 @@
 	    <th>Total Price</th>
 	    <th></th>
 	</tr>
-	<% @Hackintosh.each do |build| %>
+	<% @hackintosh.each do |build| %>
 	    <tr class="tablerow">
 		<td><%=build["name"]%></td>
 		<% if build["parts"] && build["parts"].select{|p| p["type"] == "CPU"}.any? %>
