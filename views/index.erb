@@ -109,7 +109,7 @@
 
     <table style="width:90%;" class="mainTable">
     	<tr class="TableToggle">
-	    <th colspan="5">media</th>
+	    <th colspan="5">Hackintosh</th>
 	</tr>
 	<tr class="subHeadings">
 	    <th>Name</th>
@@ -118,7 +118,7 @@
 	    <th>Total Price</th>
 	    <th></th>
 	</tr>
-	<% @media.each do |build| %>
+	<% @Hackintosh.each do |build| %>
 	    <tr class="tablerow">
 		<td><%=build["name"]%></td>
 		<% if build["parts"] && build["parts"].select{|p| p["type"] == "CPU"}.any? %>
