@@ -14,7 +14,7 @@ class BuildLoader
       params[:parts] = parse_parts(params[:url])
       params[:total_price] = calculate_price(params[:parts])
     end
-    params[:reviewed] = true
+    params[:reviewed] = false
     builds.insert(params)
   end
 
