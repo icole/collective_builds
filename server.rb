@@ -35,7 +35,7 @@ get '/' do
   @media = @builds.find({reviewed: true, category: "Media"})
   @performance = @builds.find({reviewed: true, category: "Performance"})
   @hackintosh = @builds.find({reviewed: true, category: "Hackintosh"})
-  @mini = @builds.find({reviewed: true, category: "Mini"})
+  @mini = @builds.find({reviewed: true, category: "Mini PC"})
   erb :index, :layout => :application
 end
 
