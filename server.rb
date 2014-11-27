@@ -27,7 +27,7 @@ end
 get '/review_builds' do
   protected!
   @builds = @builds.find({reviewed: false})
-  erb :index, :layout => :application
+  erb :review, :layout => :application
 end
 
 get '/' do

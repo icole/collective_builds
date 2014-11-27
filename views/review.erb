@@ -1,0 +1,23 @@
+<center>
+
+    <table style="width:90%;" class="mainTable">
+    	<tr class="TableToggle">
+	    <th colspan="5">Un-Reviewed Builds</th>
+	</tr>
+	<tr class="subHeadings">
+	    <th>Name</th>
+	    <th>Email</th>
+	    <th>Category</th>
+	    <th></th>
+	</tr>
+	<% @builds.each do |build| %>
+	    <tr class="tablerow">
+		<td><%=build["name"]%></td>
+		<td><%= build["email"]%></td>
+		<td><%= build["category"]%></td>
+		<td><a href=<%="/info/"+build["_id"].to_s%>>More Details</a></td>
+	    </tr>
+	<% end %>
+    </table>
+
+</center>
