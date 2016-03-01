@@ -6,7 +6,7 @@ Dir[".//lib/*.rb"].each {|file| require file }
 
 before do
   mongo_uri = ENV['MONGOLAB_URI']
-  db_name = mongo_uri[%r{/([^/\?]+)(\?|$)}, 1]
+  db_name = 'collective_builds'
   @builds = Mongo::MongoClient.from_uri(mongo_uri).db(db_name).collection("builds")
 end
 
