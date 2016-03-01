@@ -72,7 +72,7 @@ class BuildLoader
   end
 
   def self.get_amazon_url(asin)
-    "http://www.amazon.com/dp/#{asin}/?tag=aindexpc-20"
+    "http://www.amazon.com/dp/#{asin}/?tag=pcpapi-20"
   end
 
   def self.get_p3_url(name)
